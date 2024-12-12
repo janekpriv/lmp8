@@ -29,7 +29,7 @@ main( int argc, char **argv ) {
     return EXIT_FAILURE;
   }
 
-  licz_wystapienia(in,&skorowidz);
+  licz_wystapienia(in,skorowidz,buf);
 
   wypisz_skorowidz( &skorowidz );
 

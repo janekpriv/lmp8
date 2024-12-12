@@ -5,6 +5,8 @@
 #include <stdio.h>
 
 
-void licz_wystapienia(FILE *in, skorowidz_t *skorowidz);
+void licz_wystapienia(FILE *in, skorowidz_t *skorowidz, char buf);
+int czy_cale_slowo(const char *tekst, const char *slowo, int pozycja);
+
 
 #endif 
