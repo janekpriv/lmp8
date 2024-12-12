@@ -1,7 +1,7 @@
 #ifndef _SKOROWIDZ_H
 #define _SKOROWIDZ_H
 
-#include "list.h"
+#include "dynamic_array.h"
 
 typedef struct {
 	int ile_slow;

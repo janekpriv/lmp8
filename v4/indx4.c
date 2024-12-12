@@ -1,10 +1,9 @@
 #include <stdio.h>  // wiadomo po co
 #include <stdlib.h>
 #include <string.h> // strstr
-
-#include "list.h"
 #include "skorowidz.h"
 #include "dynamic_array.h"
+#include "skorowidz_licznik.h"
 
 #define BUFSIZE 8192   // zakładamy, że linie będą krótsze niż 8kB
 
@@ -30,14 +29,7 @@ main( int argc, char **argv ) {
     return EXIT_FAILURE;
   }
 
-  nr_linii= 0;
-  while( fgets( buf, BUFSIZE, in ) != NULL ) {
-    nr_linii++;
-    for( i= 0; i < skorowidz.ile_slow; i++ )
-      if( strstr( buf, skorowidz.slowa[i] ) != NULL ) {
-				dodaj_pozycje_skorowidza( &skorowidz, i, nr_linii );
-      }
-  }
+  licz_wystapienia(in,&skorowidz);
 
   wypisz_skorowidz( &skorowidz );
 

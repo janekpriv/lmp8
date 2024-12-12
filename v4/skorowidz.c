@@ -11,13 +11,13 @@ void zainicjuj_skorowidz( int argc, char **argv, skorowidz_t * skorowidz ) {
   for( i= 2; i < argc; i++ ) {
     skorowidz->slowa[i-2]= argv[i];
     skorowidz->licznik[i-2]= 0;
-		skorowidz->linie[i-2]= NULL;
+		skorowidz->linie[i-2]= createArray(5);
   }
 }
 
 void dodaj_pozycje_skorowidza( skorowidz_t *skorowidz, int i, int linia ) {
 	skorowidz->licznik[i]++;
-	skorowidz->linie[i]= dodaj_do_listy( skorowidz->linie[i], linia );
+	append( skorowidz->linie[i], linia );
 }
 
 void wypisz_skorowidz( skorowidz_t *skorowidz ) {
@@ -25,12 +25,17 @@ void wypisz_skorowidz( skorowidz_t *skorowidz ) {
 
   for( i= 0; i < skorowidz->ile_slow; i++ ) {
     if( skorowidz->licznik[i] > 0 ) {
-			list_t tmp= skorowidz->linie[i];
+			DynamicArray tmp= skorowidz->linie[i];
       printf( "słowo \"%s\" wystąpiło w liniach:", skorowidz->slowa[i] );
+      /*
       while( tmp != NULL ) {
         printf( " %d", tmp->nmbr );
 				tmp= tmp->next;
 			}
+      */
+     for(int i = 0; i<tmp->size;i++){
+      printf(" %d", tmp->numbers[i]);
+     }
       printf( "\n" );
     } else {
       printf( "nie napotkano słowa \"%s\"\n", skorowidz->slowa[i] );
